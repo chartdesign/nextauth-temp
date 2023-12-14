@@ -1,6 +1,5 @@
 import bcrypt from "bcrypt";
 import { PrismaClient } from "@prisma/client";
-// import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
@@ -31,26 +30,4 @@ export async function POST(request) {
   });
 
   return NextResponse.json(user);
-
-  //   const { name, email, password } = await request.json();
-
-  //   const user = await prisma.user.findUnique({
-  //     where: { email },
-  //   });
-
-  //   if (!user) {
-  //     return NextResponse.json({ error: "User not found" }, { status: 400 });
-  //   }
-
-  //   const isPasswordValid = await bcrypt.compare(password, user.password);
-
-  //   if (!isPasswordValid) {
-  //     return NextResponse.json({ error: "Invalid password" }, { status: 400 });
-  //   }
-
-  //   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-  //     expiresIn: "1h",
-  //   });
-
-  //   return NextResponse.json({ token });
 }

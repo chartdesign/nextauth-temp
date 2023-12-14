@@ -12,12 +12,28 @@ const LoginPage = () => {
 
   const loginUser = async (e) => {
     e.preventDefault();
-    signIn("credentials", {
+    const result = await signIn("credentials", {
       ...data,
       redirect: false,
     });
-    router.push("/dashboard");
+
+    if (result?.ok) {
+      router.push("/dashboard");
+    } else {
+      // Handle the error case, e.g., show an error message to the user
+      alert("Login failed");
+      console.error("Login failed");
+    }
   };
+
+  // const loginUser = async (e) => {
+  //   e.preventDefault();
+  //   signIn("credentials", {
+  //     ...data,
+  //     redirect: false,
+  //   });
+  //   router.push("/dashboard");
+  // };
 
   return (
     <>
